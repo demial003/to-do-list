@@ -1,0 +1,24 @@
+:root {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#container {
+  border: solid black;
+  height: 1000px;
+  width: 1000px;
+}
+
+button {
+  background-color: paleturquoise;
+}
+
+button:hover {
+  cursor: grab;
+  background-color: lightblue;
+}

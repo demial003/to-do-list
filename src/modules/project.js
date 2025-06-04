@@ -2,7 +2,7 @@ const createProj = (name, desc) => {
   let projs = [];
 
   const getProjs = () => {
-    projs;
+    return projs;
   };
 
   const setProjs = (arr) => {
@@ -12,7 +12,7 @@ const createProj = (name, desc) => {
   const getTodo = (name) => {
     for (let i = 0; i < projs.length; i++) {
       if (projs[i].name == name) {
-        return proj[i];
+        return projs[i];
       }
     }
     console.log("Item does not exist");
@@ -33,7 +33,15 @@ const createProj = (name, desc) => {
     return;
   };
 
-  return { name, desc, getProjs, setProjs, getTodo, addTodo, removeTodo };
+  return {
+    name,
+    desc,
+    getProjs,
+    setProjs,
+    getTodo,
+    addTodo,
+    removeTodo,
+  };
 };
 
 export default createProj;
