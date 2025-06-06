@@ -1,31 +1,54 @@
 import createTodo from "./modules/todo.js";
 import createProj from "./modules/project.js";
 import { renderHome, newProjBtn } from "./modules/home.js";
-import todoForm from "./modules/todoForm.js";
+import renderTodoForm from "./modules/todoForm.js";
+import renderProjForm from "./modules/projectForm.js";
+import renderProject from "./modules/renderProject.js";
+import renderTodo from "./modules/renderTodo.js";
 
 renderHome();
 newProjBtn();
-todoForm();
+renderTodoForm();
 
 const btn = document.getElementById("newProj");
 
 btn.addEventListener("click", () => {
-  let testProj = createProj("testing", "test project");
+  renderProjForm();
+  const projForm = document.getElementById("projForm");
 
-  for (let i = 0; i < 5; i++) {
-    let temp = createTodo("todo " + i, "testing", i, i + 1);
-    testProj.addTodo(temp);
-  }
+  projForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.getElementById("projName");
+    const desc = document.getElementById("projDesc");
+    const proj = createProj(name.value, desc.value);
+    const todo = createTodo("x", "x", 12, 12);
+    proj.addTodo(todo);
+    console.log(proj);
+    renderProject(proj);
+    const nameProjs = name + "Projs";
+    localStorage.setItem(name, JSON.stringify(proj));
+    localStorage.setItem(nameProjs, JSON.stringify(proj.getProjs()));
 
-  console.log(testProj.getProjs());
+    const btn2 = document.getElementById("displayTodo");
+    btn2.addEventListener("click", () => {
+      const newProj = createProj(
+        JSON.parse(localStorage.getItem(name)).name,
+        JSON.parse(localStorage.getItem(name)).desc
+      );
+      newProj.setProjs(JSON.parse(localStorage.getItem(nameProjs)));
+      newProj.getProjs().forEach((todo) => {
+        renderTodo(todo);
+      });
+    });
+  });
 });
 
-const form = document.getElementById("todoForm");
+const todoForm = document.getElementById("todoForm");
 
-form.addEventListener("submit", (event) => {
+todoForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const name = document.getElementById("name");
-  const desc = document.getElementById("desc");
+  const name = document.getElementById("todoName");
+  const desc = document.getElementById("todoDesc");
   const dueDate = document.getElementById("dueDate");
   const prio = document.getElementById("prio");
 

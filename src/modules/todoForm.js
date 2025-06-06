@@ -8,18 +8,18 @@ const render = () => {
 
   const name = document.createElement("input");
   name.type = "text";
-  name.id = "name";
+  name.id = "todoName";
   const nameLabel = document.createElement("label");
-  nameLabel.setAttribute("for", "name");
+  nameLabel.setAttribute("for", "todoName");
   nameLabel.textContent = "name";
   form.appendChild(nameLabel);
   form.appendChild(name);
 
   const desc = document.createElement("input");
   desc.type = "text";
-  desc.id = "desc";
+  desc.id = "todoDesc";
   const descLabel = document.createElement("label");
-  descLabel.setAttribute("for", "desc");
+  descLabel.setAttribute("for", "todoDesc");
   descLabel.textContent = "description";
   form.appendChild(descLabel);
   form.appendChild(desc);
@@ -44,22 +44,8 @@ const render = () => {
 
   const submit = document.createElement("input");
   submit.type = "submit";
-  submit.id = "submit";
+  submit.id = "submitTodo";
   form.appendChild(submit);
-};
-
-const createTodoItem = () => {
-  const form = document.getElementById("todoForm");
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const name = document.getElementById("name");
-    const desc = document.getElementById("desc");
-    const dueDate = document.getElementById("dueDate");
-    const prio = document.getElementById("prio");
-
-    const todo = createTodo(name.value, desc.value, dueDate.value, prio.value);
-  });
 };
 
 export default render;

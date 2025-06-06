@@ -34,3 +34,10 @@ button:hover {
   cursor: grab;
   background-color: lightblue;
 }
+
+.project,
+.todo {
+  height: 200px;
+  width: 200px;
+  border: solid black;
+}
