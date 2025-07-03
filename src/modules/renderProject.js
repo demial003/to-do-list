@@ -7,6 +7,7 @@ const renderProject = (proj) => {
 
   const project = document.createElement("div");
   project.className = "project";
+  project.id = name;
   container.appendChild(project);
 
   const nameDiv = document.createElement("div");
@@ -18,12 +19,17 @@ const renderProject = (proj) => {
   descDiv.textContent = desc;
 
   const btn = document.createElement("button");
-  btn.id = "displayTodo";
-  btn.textContent = "show todos";
+  btn.className = "createTodo";
+  btn.textContent = "create todo";
+
+  const btn2 = document.createElement("button");
+  btn2.className = "displayTodo";
+  btn2.textContent = "show todos";
 
   project.appendChild(nameDiv);
   project.appendChild(descDiv);
   project.appendChild(btn);
+  project.appendChild(btn2);
 };
 
 export default renderProject;

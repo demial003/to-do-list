@@ -11,24 +11,24 @@ const render = (todo) => {
   todoDiv.className = "todo";
   container.appendChild(todoDiv);
 
-  const nameDiv = document.createElement("div");
-  nameDiv.className = "todoText";
-  nameDiv.textContent = name;
+  const todoNameDiv = document.createElement("div");
+  todoNameDiv.className = "todoText1";
+  todoNameDiv.textContent = name;
 
-  const descDiv = document.createElement("div");
-  descDiv.className = "todoText";
-  descDiv.textContent = desc;
+  const todoDescDiv = document.createElement("div");
+  todoDescDiv.className = "todoText2";
+  todoDescDiv.textContent = desc;
 
   const dueDateDiv = document.createElement("div");
-  nameDiv.className = "todoText";
-  nameDiv.textContent = dueDate;
+  dueDateDiv.className = "todoText3";
+  dueDateDiv.textContent = dueDate;
 
   const prioDiv = document.createElement("div");
-  descDiv.className = "todoText";
-  descDiv.textContent = prio;
+  prioDiv.className = "todoText4";
+  prioDiv.textContent = prio;
 
-  todoDiv.appendChild(nameDiv);
-  todoDiv.appendChild(descDiv);
+  todoDiv.appendChild(todoNameDiv);
+  todoDiv.appendChild(todoDescDiv);
   todoDiv.appendChild(dueDateDiv);
   todoDiv.appendChild(prioDiv);
 };
