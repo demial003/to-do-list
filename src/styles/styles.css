@@ -28,6 +28,8 @@ form {
 
 button {
   background-color: paleturquoise;
+  height: 50px;
+  width: 60px;
 }
 
 button:hover {
@@ -40,4 +42,5 @@ button:hover {
   height: 200px;
   width: 200px;
   border: solid black;
+  /* display: flex; */
 }

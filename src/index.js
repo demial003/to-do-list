@@ -9,8 +9,6 @@ import renderTodo from "./modules/renderTodo.js";
 renderHome();
 newProjBtn();
 
-// const btn = document.getElementById("newProj");
-
 document.addEventListener("click", (e) => {
   if (e.target.id === "newProj") {
     renderProjForm();
@@ -50,7 +48,9 @@ document.addEventListener("click", (e) => {
       );
       const pName = btn.parentNode.id;
       const proj = callProj(pName);
+
       proj.addTodo(todo);
+
       storeProj(proj);
       todoForm.remove();
     });
@@ -63,18 +63,35 @@ document.addEventListener("click", (e) => {
     const pName = btn.parentNode.id;
     const proj = callProj(pName);
     proj.getProjs().forEach((todo) => {
-      renderTodo(todo);
+      renderTodo(proj, todo);
+    });
+    btn.disabled = true;
+  }
+});
+
+document.addEventListener("click", (e) => {
+  const btn = e.target;
+  if (btn.classList.contains("hideTodo")) {
+    const btn2 = document.querySelector(".displayTodo");
+    btn2.disabled = false;
+    const pName = btn.parentNode.id;
+    const todos = document.querySelectorAll("." + pName + "todo");
+    todos.forEach((todo) => {
+      todo.remove();
     });
   }
 });
 
 const callProj = (name) => {
+  console.log(name);
   const nameProjs = name + "Projs";
   const newProj = createProj(
     JSON.parse(localStorage.getItem(name)).name,
     JSON.parse(localStorage.getItem(name)).desc
   );
+
   newProj.setProjs(JSON.parse(localStorage.getItem(nameProjs)));
+
   return newProj;
 };
 

@@ -26,10 +26,15 @@ const renderProject = (proj) => {
   btn2.className = "displayTodo";
   btn2.textContent = "show todos";
 
+  const btn3 = document.createElement("button");
+  btn3.className = "hideTodo";
+  btn3.textContent = "hide todos";
+
   project.appendChild(nameDiv);
   project.appendChild(descDiv);
   project.appendChild(btn);
   project.appendChild(btn2);
+  project.appendChild(btn3);
 };
 
 export default renderProject;

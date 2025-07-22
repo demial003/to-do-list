@@ -1,6 +1,6 @@
 import "../styles/styles.css";
 
-const render = (todo) => {
+const render = (proj, todo) => {
   const container = document.getElementById("container");
   const name = todo.name;
   const desc = todo.desc;
@@ -8,7 +8,8 @@ const render = (todo) => {
   const prio = todo.prio;
 
   const todoDiv = document.createElement("div");
-  todoDiv.className = "todo";
+  todoDiv.className = proj.name + "todo";
+  todoDiv.classList.add("todo");
   container.appendChild(todoDiv);
 
   const todoNameDiv = document.createElement("div");

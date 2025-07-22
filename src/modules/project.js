@@ -20,6 +20,8 @@ const createProj = (name, desc) => {
   };
 
   const addTodo = (todo) => {
+    console.log(projs);
+    console.log(JSON.stringify(todo));
     projs.push(todo);
   };
 
