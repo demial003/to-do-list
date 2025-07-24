@@ -11,7 +11,7 @@ const createProj = (name, desc) => {
 
   const getTodo = (name) => {
     for (let i = 0; i < projs.length; i++) {
-      if (projs[i].name == name) {
+      if (projs[i].name === name) {
         return projs[i];
       }
     }

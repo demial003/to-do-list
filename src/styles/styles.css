@@ -44,3 +44,11 @@ button:hover {
   border: solid black;
   /* display: flex; */
 }
+
+#active {
+  border-color: red;
+}
+
+#completed {
+  border-color: green;
+}

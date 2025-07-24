@@ -30,11 +30,16 @@ const renderProject = (proj) => {
   btn3.className = "hideTodo";
   btn3.textContent = "hide todos";
 
+  const btn4 = document.createElement("button");
+  btn4.className = "deleteProj";
+  btn4.textContent = "delete proj";
+
   project.appendChild(nameDiv);
   project.appendChild(descDiv);
   project.appendChild(btn);
   project.appendChild(btn2);
   project.appendChild(btn3);
+  project.appendChild(btn4);
 };
 
 export default renderProject;

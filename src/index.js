@@ -50,21 +50,23 @@ document.addEventListener("click", (e) => {
       const proj = callProj(pName);
 
       proj.addTodo(todo);
-
       storeProj(proj);
       todoForm.remove();
+      renderTodo(proj);
+      const btn2 = document.querySelector(".displayTodo");
+      btn2.disabled = true;
     });
   }
 });
 
 document.addEventListener("click", (e) => {
   const btn = e.target;
-  if (e.target.classList.contains("displayTodo")) {
+  if (btn.classList.contains("displayTodo")) {
     const pName = btn.parentNode.id;
     const proj = callProj(pName);
-    proj.getProjs().forEach((todo) => {
-      renderTodo(proj, todo);
-    });
+
+    renderTodo(proj);
+
     btn.disabled = true;
   }
 });
@@ -90,7 +92,11 @@ const callProj = (name) => {
     JSON.parse(localStorage.getItem(name)).desc
   );
 
-  newProj.setProjs(JSON.parse(localStorage.getItem(nameProjs)));
+  const projList = JSON.parse(localStorage.getItem(nameProjs));
+  projList.forEach((todo) => {
+    const temp = createTodo(todo.name, todo.desc, todo.dueDate, todo.prio);
+    newProj.addTodo(temp);
+  });
 
   return newProj;
 };
@@ -99,3 +105,24 @@ const storeProj = (proj) => {
   localStorage.setItem(proj.name, JSON.stringify(proj));
   localStorage.setItem(proj.name + "Projs", JSON.stringify(proj.getProjs()));
 };
+
+document.addEventListener("click", (e) => {
+  const btn = e.target;
+  if (btn.classList.contains("deleteProj")) {
+    const pName = btn.parentNode.id;
+    localStorage.removeItem(pName);
+    localStorage.removeItem(pName + "Projs");
+    btn.parentNode.remove();
+  }
+});
+
+document.addEventListener("click", (e) => {
+  const btn = e.target;
+  if (btn.classList.contains("completeTodo")) {
+    if (btn.parentNode.id === "active") {
+      btn.parentNode.id = "completed";
+    } else {
+      btn.parentNode.id = "active";
+    }
+  }
+});
